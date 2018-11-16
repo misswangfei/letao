@@ -41,7 +41,32 @@ $(document).ajaxStart(function () {
     $(this).next().stop().slideToggle();
   });
   // 功能2: 左侧菜单列表切换功能
-  
+    $(".icon_left").click(function () {
+      $(".lt_aside").toggleClass("hidemenu");
+      $(".lt_main").toggleClass("hidemenu");
+      $(".lt_topbar").toggleClass("hidemenu");
+    })
+     
+
+     // 功能3: 退出功能
+     $(".icon_right").click(function () {
+         $("#logoutModal").modal("show");
+     });
+      
+      $("#logouBtn").click(function () {
+         $.ajax({
+           type: "get",
+           url: "/employee/employeeLogout",
+           datatype: "json",
+           success: function ( info ) {
+              console.log(111);
+             if (info.success) {
+                location.href= "login.html";
+             };
+           }
+         })
+      })
+
 
 
 })

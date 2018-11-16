@@ -11,10 +11,14 @@
     padding: 0;
     margin: 0;
   }
-
-
-
-
+  .red {
+    color: #A94442;
+  }
+  .table.table-bordered th,
+  .table.table-bordered td {
+    text-align: center;
+    vertical-align: middle;
+  }
 
 
 
@@ -43,6 +47,10 @@
   top: 0;
   left: 0;
   z-index: 999;
+  transition: all 1s;
+}
+.lt_aside.hidemenu {
+ left: -180px;
 }
 
 .lt_aside .brand {
@@ -102,7 +110,11 @@
   height: 1000px;
   padding-left: 180px;
   padding-top: 50px;
+  transition: all 1s;
 
+}
+.lt_main.hidemenu {
+  padding-left: 0;
 }
 .lt_topbar {
   position: fixed;
@@ -112,6 +124,10 @@
   height: 50px;
   background-color: #3C8DBC;
   padding-left: 180px;
+  transition: all 1s;
+}
+.lt_topbar.hidemenu {
+  padding-left: 0px;
 }
 .lt_topbar .icon_left,
 .lt_topbar .icon_right{
@@ -122,4 +138,10 @@
   font-size: 20px;
   color: #fff;
 
+}
+.lt_content .echarts_left,
+.lt_content .echarts_right{
+     height: 400px;
+     width: 48%;
+    
 }
