@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
   <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
   <link rel="stylesheet" href="./css/conmon.css">
 </head>
+
 <body>
   <!-- 左侧的侧边栏 -->
   <div class="lt_aside">
@@ -26,16 +28,16 @@
     <div class="nav">
       <ul>
         <li>
-         <a href="user.html">
-           <i class="glyphicon glyphicon-user"></i>
+          <a href="user.html">
+            <i class="glyphicon glyphicon-user"></i>
             <span>用户管理</span>
-         </a>   
+          </a>
         </li>
         <li><a href="javascript:;" class="category"><i class="glyphicon glyphicon-list"></i><span>分类管理</span></a>
-        <div class="child">
+          <div class="child" style="display: block;" >
             <a href="first.html" class="current">一级分类</a>
-            <a href="second.html" >二级分类</a>
-        </div>
+            <a href="second.html">二级分类</a>
+          </div>
         </li>
         <li><a href="product.html"><i class="glyphicon glyphicon-tags"></i><span>商品管理</span></a></li>
       </ul>
@@ -43,66 +45,125 @@
   </div>
 
   <!-- 右侧主体部分 -->
-   <div class="lt_main">
-     <div class="lt_topbar">
-       <a href="javascript:;" class="icon_left pull-left"><i class="glyphicon glyphicon-align-justify"></i></a>
-       <a href="javascript:;" class="icon_right pull-right"><i class="glyphicon glyphicon-log-out"></i></a>
-     </div>
-     <!-- container 响应式版心 container-fluid 流式布局容器(宽度100%, 默认左右padding 15px) -->
-     <div class="container-fluid">
-        
-        <ol class="breadcrumb mt_20">
-            <li><a href="index.html">管理系统</a></li>
-            <li class="active">首页</li>
-          </ol>
+  <div class="lt_main">
+    <div class="lt_topbar">
+      <a href="javascript:;" class="icon_left pull-left"><i class="glyphicon glyphicon-align-justify"></i></a>
+      <a href="javascript:;" class="icon_right pull-right"><i class="glyphicon glyphicon-log-out"></i></a>
+    </div>
+    <!-- container 响应式版心 container-fluid 流式布局容器(宽度100%, 默认左右padding 15px) -->
+    <div class="container-fluid">
 
-          <div class="lt_content">
-              <!-- 左侧的柱状图 -->
-              <div class="echarts_left pull-left"></div>
-              <!-- 右侧的饼状图 -->
-              <div class="echarts_right pull-right"></div>
-            </div>
+      <ol class="breadcrumb mt_20">
+        <li><a href="index.html">管理系统</a></li>
+        <li class="active">分类管理</li>
+        <li class="active">一级分类</li>
+      </ol>
 
-     </div>
+      <div class="lt_content">
+        <!-- 按钮 -->
+        <button class="btn btn-default" id="addBtn">添加分类</button>
+        <!-- 表格 -->
+        <table class="table table-bordered table-hover mt_20">
+          <thead>
+            <tr>
+              <th width="20%">序号</th>
+              <th width="80%">一级分类名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 模版 -->
+          </tbody>
+        </table>
+        <!-- 分页容器 -->
+        <div class="text-right">
+          <ul id="paginator">
 
-   </div>
-    <!-- 退出模态框 -->
-    <!-- 模态框大小: modal-lg 大型   默认中型    modal-sm 小型 -->
-    <!-- 外层的蒙层 -->
-   <div class="modal fade" id="logoutModal" tabindex="-1"  >
-     <!-- 内部的模态框 -->
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- 添加模态框: -->
+
+  <div class="modal fade" id="addModal" tabindex="-1">
+    <!-- 内部的模态框 -->
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <form id="form">
           <!-- 头部 -->
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" data-dismiss="modal" ><span >&times;</span></button>
-            <h4 class="modal-title" >温馨提示</h4>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            <h4 class="modal-title">添加分类</h4>
           </div>
           <!-- 中间 -->
           <div class="modal-body">
-             <p class="red"><i class="glyphicon glyphicon-info-sign"></i><span>您确定要退出后台管理系统吗？</span></p>
+            <div class="form-group">
+              <input type="text" name="categoryName" class="form-control" placeholder="请输入一级分类">
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" id="logouBtn">退出</button>
+            <button type="submit" class="btn btn-primary">添加</button>
           </div>
-        </div>
+
+        </form>
       </div>
     </div>
+  </div>
+
+
+   <!-- 外层的蒙层 -->
+   <div class="modal fade" id="logoutModal" tabindex="-1"  >
+      <!-- 内部的模态框 -->
+       <div class="modal-dialog modal-sm">
+         <div class="modal-content">
+           <!-- 头部 -->
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal"  ><span >&times;</span></button>
+             <h4 class="modal-title" >温馨提示</h4>
+           </div>
+           <!-- 中间 -->
+           <div class="modal-body">
+              <p class="red"><i class="glyphicon glyphicon-info-sign"></i><span>您确定要退出后台管理系统吗？</span></p>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+             <button type="button" class="btn btn-primary" id="logouBtn">退出</button>
+           </div>
+         </div>
+       </div>
+     </div>
+   
+
+     <!-- 模版 -->
+     <script type="text/html" id="firstTpl">
+      {{ each rows v i }}
+        <tr>
+          <td>{{ i + 1 + (page-1) * size}}</td>
+          <td>{{ v.categoryName }}</td>
+        </tr>
+      {{ /each }}
+    </script>
 
 
 
-
-
-     <script src="./lib/jquery/jquery.min.js"></script>
-     <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
-     <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
-     <script src="./lib/nprogress/nprogress.js"></script>
-     <script src="./lib/artTemplate/template-web.js"></script>
-     <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
-     <script src=""></script>
-     <script src="./js/common.js"></script>
-
+    <script src="./lib/jquery/jquery.min.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+    <script src="./lib/nprogress/nprogress.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+    <script src="./js/common.js"></script>
+   
+    <script src="./js/isLogin.js"></script>
+    <script src="./js/first.js"></script>
+    
+  
 
 </body>
+
 </html>
