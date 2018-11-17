@@ -53,15 +53,34 @@
         
         <ol class="breadcrumb mt_20">
             <li><a href="index.html">管理系统</a></li>
-            <li class="active">首页</li>
+            <li class="active">用户管理</li>
           </ol>
 
           <div class="lt_content">
-              <!-- 左侧的柱状图 -->
-              <div class="echarts_left pull-left"></div>
-              <!-- 右侧的饼状图 -->
-              <div class="echarts_right pull-right"></div>
+            <table class="table table-bordered table-hover">
+               <thead>
+                  <tr>
+                    <th>序号</th>
+                    <th>用户名</th>
+                    <th>手机号</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                  </tr>
+               </thead>
+               <tbody>
+                <!-- 模版 -->
+               </tbody>
+            </table>
+            
+            <!-- 分页容器 -->
+            <div class="text-right">
+              <ul id="paginator">
+
+              </ul>
             </div>
+            
+
+          </div>
 
      </div>
 
@@ -75,7 +94,7 @@
         <div class="modal-content">
           <!-- 头部 -->
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" data-dismiss="modal" ><span >&times;</span></button>
+            <button type="button" class="close" data-dismiss="modal"  ><span >&times;</span></button>
             <h4 class="modal-title" >温馨提示</h4>
           </div>
           <!-- 中间 -->
@@ -89,7 +108,53 @@
         </div>
       </div>
     </div>
-
+ 
+    <!-- 启用和禁用模态框 -->
+    <div class="modal fade" id="usertModal" tabindex="-1"  >
+        <!-- 内部的模态框 -->
+         <div class="modal-dialog modal-sm">
+           <div class="modal-content">
+             <!-- 头部 -->
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"  ><span >&times;</span></button>
+               <h4 class="modal-title" >温馨提示</h4>
+             </div>
+             <!-- 中间 -->
+             <div class="modal-body">
+                <p class="red"><i class="glyphicon glyphicon-info-sign"></i><span>你确定要执行此操作吗？</span></p>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+               <button type="button" class="btn btn-primary" id="confirmBtn">确定</button>
+             </div>
+           </div>
+         </div>
+       </div>
+    
+ 
+ 
+    <!-- 准备模板
+     1. type="text/template"
+     2. type="text/html"
+     都是标记当成 script 标签中存储的是 html 模板
+-->
+     <script type="text/html" id="tmp">
+      {{ each rows v i }}
+        <tr>
+          <td>{{ i + 1 + (page-1) * size}}</td>
+          <td>{{ v.username }}</td>
+          <td>{{ v.mobile }}</td>
+          <td>{{ v.isDelete === 1 ? "正常" : "已禁用" }}</td>
+          <td data-id="{{ v.id }}">
+            {{ if v.isDelete === 1 }}
+            <button class="btn btn-danger">禁用</button>
+            {{ else }}
+            <button class="btn btn-success">启用</button>
+            {{ /if }}
+          </td>
+        </tr>
+      {{ /each }}
+    </script>
 
 
 
@@ -98,8 +163,11 @@
      <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
      <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
      <script src="./lib/nprogress/nprogress.js"></script>
-     <script src="./lib/echarts/echarts.min.js"></script>
-      <script src="./js/common.js"></script>
+     <script src="./lib/artTemplate/template-web.js"></script>
+     <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+     <script src="./js/common.js"></script>
+     <script src="./js/isLogin.js"></script>
+     <script src="./js/user.js"></script>
 
 
 </body>

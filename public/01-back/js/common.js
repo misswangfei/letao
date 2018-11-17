@@ -27,7 +27,7 @@ $(document).ajaxStart(function () {
 
 $(document).ajaxStart(function () {
   setTimeout(function() {
-     关闭进度条
+    // 关闭进度条
     NProgress.done();
     }, 500)
 });
@@ -36,10 +36,10 @@ $(document).ajaxStart(function () {
  ;$(function () {
    // 公共的功能
     // 功能1: 导航点击切换功能
-  $(".category").click(function () {
-    // 让下一个兄弟元素切换显示隐藏
-    $(this).next().stop().slideToggle();
-  });
+    $('.lt_aside .category').click(function() {
+      // 让下一个兄弟元素切换显示隐藏
+      $(this).next().stop().slideToggle();
+    });
   // 功能2: 左侧菜单列表切换功能
     $(".icon_left").click(function () {
       $(".lt_aside").toggleClass("hidemenu");
