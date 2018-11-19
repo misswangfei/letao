@@ -23,7 +23,7 @@
       </div>
       <!-- 用户头像 -->
       <div class="user">
-        <img src="./image/02.jpg" alt="">
+        <img src="./images/02.jpg" alt="">
         <p>超级管理员</p>
       </div>
       <!-- 导航 -->
@@ -55,7 +55,7 @@
     
         <!-- 链接导航 -->
         <ol class="breadcrumb mt_20">
-          <li><a href="index.html">管理系统</a></li>
+          <li><a href="01-index.html">管理系统</a></li>
           <li class="active">分类管理</li>
           <li class="active">二级分类</li>
         </ol>
@@ -132,7 +132,7 @@
               </div>
     
               <div class="form-group" id="imgBox">
-                <img src="./image/none.png" style="width: 100px" alt="">
+                <img src="./images/none.png" style="width: 100px" alt="">
                 <input type="hidden" name="brandLogo">
               </div>
     
@@ -182,7 +182,7 @@
           <td>{{ i+1+ (page-1)*size }}</td>
           <td>{{ v.categoryName }}</td>
           <td>{{ v.brandName }}</td>
-          <td><img style="height: 50px;" src="{{ v.brandLogo }}" alt=""></td>
+          <td><img style="height: 100px;" src="{{ v.brandLogo }}" alt=""></td>
         </tr>
       {{ /each }}
     </script>

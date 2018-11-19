@@ -130,7 +130,29 @@ $(function () {
     }
   })
 
+  // 6.表单效验 阻止默认跳转  发送ajax
+  $("#form").on("success.form.bv", function (e) {
+    e.preventDefault();
 
+    $.ajax({
+      type: "post",
+      url: "/category/addSecondCategory",
+      data: $("#form").serialize(),
+      datatype: "json",
+      success: function (info) {
+        console.log(info);
+        if (info.success) {
+          $("#addModal").modal("hide");
+          currentPage = 1;
+          render();
+
+          $("#form").data("bootstrapValidator").resetForm(true);
+          $("#dropdownText").text("请选择一级分类");
+          $("#imgBox img").attr("src", "./images/none.png");
+        }
+      }
+    })
+  })
 
 
 })
