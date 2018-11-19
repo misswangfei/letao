@@ -1,0 +1,48 @@
+
+.nav{
+  padding: 10px;
+}
+.nav li{
+  float: left;
+  width: 33.3%;
+
+}
+.nav li a{
+  display: block;
+}
+.nav li img{
+  width: 100%;
+  display: block;
+}
+.product {
+  padding: 10px;
+}
+.product .product-item {
+  padding: 10px;
+  float: left;
+  width: 48%;
+  text-align: center;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+
+}
+.product .product-item:nth-child(2n+1){
+  margin-right: 4%;
+}
+.product .product-item a{
+  display: block;
+  width: 100%;
+  height: 100%;
+ 
+}
+.product .product-item img{
+   width: 130px;
+   height: 130px;
+   margin: 0 auto;
+}
+.product .product-item .price {
+  color: red;
+}
+.product .product-item .oldPrice{
+ text-decoration: line-through;
+}
